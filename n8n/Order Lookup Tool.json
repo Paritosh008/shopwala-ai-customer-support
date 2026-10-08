@@ -1,0 +1,102 @@
+{
+  "updatedAt": "2026-10-07T08:15:52.601Z",
+  "createdAt": "2026-10-07T06:18:32.516Z",
+  "id": "Qr9L1XUpc3URNvfX",
+  "name": "Order Lookup Tool",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "orderNumber"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6676218c-3e91-4fab-bd6e-3992f1ca3c92",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "jsCode": "const orderNumber = $input.first().json.orderNumber;\n\nconst orders = {\n  \"ORD-10245\": {\n    orderNumber: \"ORD-10245\",\n    customerName: \"Rahul\",\n    status: \"Shipped\",\n    carrier: \"Delhivery\",\n    trackingNumber: \"DLV987654321\",\n    estimatedDelivery: \"2026-10-09\"\n  },\n  \"ORD-10246\": {\n    orderNumber: \"ORD-10246\",\n    customerName: \"Amit\",\n    status: \"Out for Delivery\",\n    carrier: \"Blue Dart\",\n    trackingNumber: \"BD123456789\",\n    estimatedDelivery: \"2026-10-07\"\n  },\n  \"ORD-10247\": {\n    orderNumber: \"ORD-10247\",\n    customerName: \"Priya\",\n    status: \"Processing\",\n    carrier: null,\n    trackingNumber: null,\n    estimatedDelivery: \"2026-10-11\"\n  }\n};\n\nconst order = orders[orderNumber];\n\nif (!order) {\n  return [\n    {\n      json: {\n        found: false,\n        orderNumber,\n        message: `Order ${orderNumber} was not found.`\n      }\n    }\n  ];\n}\n\nreturn [\n  {\n    json: {\n      found: true,\n      ...order\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "63fbe017-b989-4e9e-8034-b418c4a8812b",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "orderNumber": "ORD-10245"
+        }
+      }
+    ]
+  },
+  "versionId": "bee43145-cd23-4b69-ab27-713361b034c7",
+  "activeVersionId": "bee43145-cd23-4b69-ab27-713361b034c7",
+  "versionCounter": 10,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-10-07T06:18:32.532Z",
+      "createdAt": "2026-10-07T06:18:32.532Z",
+      "role": "workflow:owner",
+      "workflowId": "Qr9L1XUpc3URNvfX",
+      "projectId": "euUjcnVMMJHvpfRO",
+      "project": {
+        "updatedAt": "2026-10-07T01:23:53.327Z",
+        "createdAt": "2026-10-07T01:13:33.956Z",
+        "id": "euUjcnVMMJHvpfRO",
+        "name": "Paritosh Chaudhary <chaudharyparitosh848@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "65a7dac9-56e3-4ab0-836e-a4b2b425aadc"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "v1-order-lookup",
+    "description": "Added Order Lookup Tool with order number input and mock order database."
+  }
+}
