@@ -2,7 +2,7 @@
 
 An AI-powered customer support automation system built with **n8n, Claude, RAG, Ollama embeddings, Simple Vector Store, and Node.js**.
 
-The project provides a customer-facing chat interface where an AI agent can understand support requests, search a PDF knowledge base, look up order information, and return concise answers through a
+The project provides a customer-facing chat interface where an AI agent can understand support requests, search a PDF knowledge base, look up order information, and return concise answers through an automated n8n workflow.
 
 ## 🚀 Features
 
