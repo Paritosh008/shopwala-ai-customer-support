@@ -1,69 +1,54 @@
 # 🛍️ ShopWala AI Customer Support Automation
 
-ShopWala AI Customer Support Automation is a production-style customer support system built with **n8n, Claude, RAG, Ollama, Simple Vector Store, and Node.js**.
+An AI-powered customer support automation system built with **n8n, Claude, RAG, Ollama embeddings, Simple Vector Store, and Node.js**.
 
-The system allows customers to ask support questions through a web chat interface. The AI agent can understand the request, search the company's knowledge base, look up order details, and provide accurate responses without relying on hardcoded answers.
+The project provides a customer-facing chat interface where an AI agent can understand support requests, search a PDF knowledge base, look up order information, and return concise answers through an automated n8n workflow.
+
+## 🎥 Demo
+
+Watch the ShopWala AI Customer Support Automation demo:
+
+[▶️ Watch Demo Video](https://github.com/Paritosh008/shopwala-ai-customer-support/raw/refs/heads/main/demo/ShopWala_VC_Demo_Final_BGM_720p.mp4)
+
+> **Note:** Upload `ShopWala_VC_Demo_Final_BGM_720p.mp4` to the repository inside the `demo/` folder for the video link above to work.
 
 ## 🚀 Features
 
 - 🤖 AI-powered customer support agent
-- 🔎 RAG-based knowledge retrieval
-- 📦 Order status lookup using an n8n workflow tool
-- 🚚 Shipping and delivery information
+- 🧠 RAG-based knowledge retrieval from PDF policies
+- 📦 Order lookup using an n8n workflow tool
+- 🚚 Shipping and delivery support
 - ↩️ Return and exchange policy support
-- 💰 Refund and payment information
-- 🧠 Ollama `nomic-embed-text` embeddings
-- 🗄️ Simple Vector Store for document retrieval
-- 🔧 n8n AI Agent Tool integration
+- 💰 Payment and refund support
+- 🔎 Vector-based document retrieval
+- 🧩 n8n AI Agent tool integration
 - 💬 Customer-facing web chat UI
+- 🔗 Webhook-based communication
 - 🐳 Docker-based n8n setup
-- 🔗 Webhook-based communication between UI and n8n
+- 🛡️ Designed to avoid inventing customer or order information
 
 ## 🏗️ Architecture
 
-Customer Chat UI
-↓
-Node.js API Proxy
-↓
-n8n Webhook
-↓
-AI Agent (Claude)
-├── Order Lookup Tool
-└── RAG Knowledge Base
-↓
-Customer Response
-
-## 🛠️ Tech Stack
-
-- n8n
-- Claude / Anthropic
-- RAG
-- Ollama
-- Simple Vector Store
-- Node.js
-- JavaScript
-- Docker
-- Webhooks
-- PDF Knowledge Base
-
-## 📂 Project Structure
-
 ```text
-shopwala-ai-customer-support/
-├── chat-ui/
-│   ├── public/
-│   │   └── index.html
-│   └── server.js
-├── knowledge/
-│   ├── shopwala-exchange-policy.pdf
-│   ├── shopwala-orders-account-help.pdf
-│   ├── shopwala-payment-refund-policy.pdf
-│   ├── shopwala-return-policy.pdf
-│   └── shopwala-shipping-delivery.pdf
-├── n8n/
-│   ├── AI Customer Support Automation.json
-│   ├── Order Lookup Tool.json
-│   └── ShopWala Knowledge Base.json
-├── docker-compose.yml
-├── .gitignore
-└── README.md
+Customer Web Chat
+       │
+       ▼
+Node.js Chat UI / API Proxy
+       │
+       ▼
+n8n Production Webhook
+       │
+       ▼
+AI Agent (Claude)
+       │
+       ├──────────────► Order Lookup Tool
+       │                 └── Mock Order Data
+       │
+       └──────────────► RAG Knowledge Base
+                         ├── PDF Documents
+                         ├── Ollama Embeddings
+                         │   └── nomic-embed-text
+                         └── Simple Vector Store
+       │
+       ▼
+Customer Response
